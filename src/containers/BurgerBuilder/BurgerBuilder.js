@@ -27,6 +27,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount() {
+        console.log('bb', this.props);
         axios.get('https://react-burger-project-e24a3-default-rtdb.firebaseio.com/ingredients.json')
             .then(responce => {
                 this.setState({ingredients: responce.data})
@@ -91,28 +92,26 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         // alert('you continue !')
-        this.setState({ loading: true });
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Abdullah',
-                address: {
-                    street: 'abc street lahore',
-                    zipCode: '1q3e44',
-                    country: 'Pakistan'
-                },
-                email: 'test@burger.com'
-            },
-            deliveryMethod: 'fastest'
-        }
-        axios.post('/orders.json', order).then(responce => {
-                // console.log(responce);
-                this.setState({ loading: false, purchasing: false});
-            }).catch(error => {
-                // console.log(error);
-                this.setState({ loading: false, purchasing: false});
-            }); 
+        // this.setState({ loading: true });
+        // const order = {
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         name: 'Abdullah',
+        //         address: {
+        //             street: 'abc street lahore',
+        //             zipCode: '1q3e44',
+        //             country: 'Pakistan'
+        //         },
+        //         email: 'test@burger.com'
+        //     },
+        //     deliveryMethod: 'fastest'
+        // }
+        // axios.post('/orders.json', order).then(responce => {
+        //         this.setState({ loading: false, purchasing: false});
+        //     }).catch(error => {
+        //         this.setState({ loading: false, purchasing: false});
+        //     }); 
     }
 
     render() {
